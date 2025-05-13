@@ -1,0 +1,448 @@
+/* Base Styles */
+:root {
+    --primary-color: #4a6cf7;
+    --primary-hover: #3a57d8;
+    --danger-color: #f44336;
+    --danger-hover: #d32f2f;
+    --text-color: #333;
+    --secondary-text: #666;
+    --light-bg: #f5f7fa;
+    --border-color: #ddd;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --modal-overlay: rgba(0, 0, 0, 0.5);
+    --success-color: #4caf50;
+    --card-bg: #fff;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Button Styles */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-hover);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Ideas Container */
+.ideas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Card Styles */
+.idea-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.idea-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.card-description {
+    color: var(--secondary-text);
+    margin-bottom: 15px;
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.vote-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vote-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    transition: var(--transition);
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+
+.upvote {
+    color: var(--success-color);
+}
+
+.upvote:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.downvote {
+    color: var(--danger-color);
+}
+
+.downvote:hover {
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+.vote-count {
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+    background-color: var(--light-bg);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.edit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.edit-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Drag and Drop Styles */
+.dragging {
+    opacity: 0.5;
+    transform: scale(0.95);
+}
+
+.drag-placeholder {
+    border: 2px dashed var(--primary-color);
+    background-color: rgba(74, 108, 247, 0.1);
+    border-radius: 8px;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--secondary-text);
+}
+
+.close-btn:hover {
+    color: var(--danger-color);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+/* Loading and Error States */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(74, 108, 247, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-message {
+    text-align: center;
+    padding: 30px;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-radius: 8px;
+    color: var(--danger-color);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--success-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    animation: fadeIn 0.3s, fadeOut 0.3s 2.7s forwards;
+}
+
+.toast.error {
+    background-color: var(--danger-color);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .actions {
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .ideas-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .ideas-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .sort-container {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    select {
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
